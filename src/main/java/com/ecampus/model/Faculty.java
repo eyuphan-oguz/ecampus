@@ -9,19 +9,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Lesson extends Time{
+public class Faculty extends Time{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String lessonName;
-    private int credit;
-
-
+    private String facultyName;
+    private String facultyManagerName;
 }
