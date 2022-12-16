@@ -1,7 +1,8 @@
 package com.ecampus.controller;
 
-
+import com.ecampus.model.Lesson;
 import com.ecampus.model.Student;
+import com.ecampus.service.LessonService;
 import com.ecampus.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,16 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/students")
+@RequestMapping("/lessons")
 @RequiredArgsConstructor
-public class StudentController {
+public class LessonController {
 
-    private final StudentService studentService;
+    private final LessonService lessonService;
 
     @PostMapping()
-    public Student addUser(@RequestBody Student student)
+    public Lesson addLesson(@RequestBody Lesson lesson)
     {
-        return studentService.addStudent(student);
+        return lessonService.addLesson(lesson);
     }
-
 }
