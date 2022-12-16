@@ -19,7 +19,7 @@ public class StudentController {
     @PostMapping()
     public Student addUser(@RequestBody Student student)
     {
-        return studentService.AddUser(student);
+        return studentService.AddStudent(student);
     }
 
 }

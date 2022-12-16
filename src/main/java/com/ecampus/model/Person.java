@@ -5,6 +5,7 @@ import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -23,4 +24,5 @@ public class Person {
     private String birthPlace;
     private String email;
     private String phoneNo;
+    private LocalDateTime createDate = LocalDateTime.now();
 }
