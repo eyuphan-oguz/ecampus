@@ -18,4 +18,6 @@ public class FacultyService {
         this.facultyRepository.save(faculty);
         return faculty;
     }
+
+
 }

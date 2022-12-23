@@ -16,13 +16,13 @@ public class Person {
     private String surname;
     private Date birthDate;
     private String tcNo;
-    private Date registerDate;
     private String city;
     private boolean gender;
     private String motherName;
     private String fatherName;
     private String birthPlace;
     private String email;
+    private String password;
     private String phoneNo;
     private LocalDateTime createDate = LocalDateTime.now();
 }

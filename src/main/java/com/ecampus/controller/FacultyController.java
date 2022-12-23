@@ -3,10 +3,7 @@ package com.ecampus.controller;
 import com.ecampus.model.Faculty;
 import com.ecampus.service.FacultyService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/faculties")
@@ -19,5 +16,7 @@ public class FacultyController {
     {
         return facultyService.addFaculty(faculty);
     }
+
+    //@GetMapping(path = "/students")
 
 }

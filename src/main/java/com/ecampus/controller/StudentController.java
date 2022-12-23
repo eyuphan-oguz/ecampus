@@ -2,12 +2,13 @@ package com.ecampus.controller;
 
 
 import com.ecampus.model.Student;
+import com.ecampus.repository.StudentRepository;
 import com.ecampus.service.StudentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/students")
@@ -21,5 +22,11 @@ public class StudentController {
     {
         return studentService.addStudent(student);
     }
+
+    @PutMapping("/{studentId}/faculties/{facultyId}")
+    public Student facultyAddForStudent(@PathVariable Long studentId,@PathVariable Long facultyId){
+        return studentService.facultyAddForStudentService(studentId,facultyId);
+    }
+
 
 }
