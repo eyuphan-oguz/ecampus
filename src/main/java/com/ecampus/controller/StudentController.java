@@ -28,5 +28,8 @@ public class StudentController {
         return studentService.facultyAddForStudentService(studentId,facultyId);
     }
 
-
+    @PutMapping("/{studentId}/departments/{departmentId}")
+    public Student departmentAddForStudent(@PathVariable Long studentId,@PathVariable Long departmentId){
+        return studentService.departmentAddForStudentService(studentId,departmentId);
+    }
 }
