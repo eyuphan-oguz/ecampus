@@ -6,6 +6,7 @@ import com.ecampus.repository.DepartmentRepository;
 import com.ecampus.repository.FacultyRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -25,6 +26,12 @@ public class FacultyService {
         return faculty;
     }
 
+    public Faculty removeFaculty(Long facultyId) {
+        Faculty faculty=facultyRepository.findById(facultyId).get();
+        facultyRepository.delete(faculty);
+        return faculty;
+    }
+
     public Faculty departmentAddForFacultyService(Long departmentId, Long facultyId) {
         Set<Department> departmentSet=null;
         Faculty faculty=facultyRepository.findById(facultyId).get();
@@ -33,6 +40,20 @@ public class FacultyService {
         departmentSet.add(department);
         faculty.setDepartments(departmentSet);
         return facultyRepository.save(faculty);
+    }
+
+    public Faculty departmentRemoveForFacultyService(Long departmentId, Long facultyId) {
+        Set<Department> departmentSet=null;
+        Faculty faculty=facultyRepository.findById(facultyId).get();
+        Department department=departmentRepository.findById(departmentId).get();
+        departmentSet=faculty.getDepartments();
+        departmentSet.remove(department);
+        faculty.setDepartments(departmentSet);
+        return facultyRepository.save(faculty);
+    }
+
+    public List<Faculty> getAllFaculty() {
+        return facultyRepository.findAll();
     }
 
 
