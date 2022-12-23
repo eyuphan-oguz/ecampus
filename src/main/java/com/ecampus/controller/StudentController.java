@@ -1,6 +1,7 @@
 package com.ecampus.controller;
 
 
+import com.ecampus.model.Department;
 import com.ecampus.model.Student;
 import com.ecampus.repository.StudentRepository;
 import com.ecampus.service.StudentService;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -16,6 +18,16 @@ import java.util.Optional;
 public class StudentController {
 
     private final StudentService studentService;
+
+    @GetMapping()
+    public List<Student> getAllStudent(){
+        return studentService.getAllStudent();
+    }
+
+    @GetMapping("/{studentId}")
+    public Student getStudent(@PathVariable Long studentId){
+        return studentService.getStudentById(studentId);
+    }
 
     @PostMapping()
     public Student addUser(@RequestBody Student student)

@@ -9,6 +9,7 @@ import com.ecampus.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -29,12 +30,20 @@ public class StudentService {
         this.departmentRepository = departmentRepository;
     }
 
+
+
     public Student addStudent(Student user) {
         this.studentRepository.save(user);
         return user;
     }
 
+    public List<Student> getAllStudent() {
+        return studentRepository.findAll();
+    }
 
+    public Student getStudentById(Long id) {
+        return studentRepository.findById(id).get();
+    }
     public Student facultyAddForStudentService(Long studentsId, Long facultyId) {
         Set<Faculty> facultySet=null;
         Student student=studentRepository.findById(studentsId).get();
