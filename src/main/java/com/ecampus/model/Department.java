@@ -22,7 +22,9 @@ public class Department extends Time{
     private String departmentName;
     private boolean facultyOrInstitute;
 
-
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,targetEntity = Faculty.class)
+    @JoinTable(name = "department_student",joinColumns = @JoinColumn(name = "departmentId"),inverseJoinColumns = @JoinColumn(name = "userId"))
+    private Set<Student> students=new HashSet<>();
 
 
 

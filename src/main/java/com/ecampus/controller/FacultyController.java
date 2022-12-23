@@ -17,8 +17,12 @@ public class FacultyController {
     private final FacultyService facultyService;
 
     @GetMapping()
-    public List<Faculty> getFaculty(){
+    public List<Faculty> getAllFaculty(){
         return facultyService.getAllFaculty();
+    }
+    @GetMapping("/{facultyId}")
+    public Faculty getFaculty(@PathVariable Long facultyId){
+        return facultyService.getFacultyById(facultyId);
     }
 
     @PostMapping()

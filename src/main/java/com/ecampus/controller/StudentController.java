@@ -32,4 +32,14 @@ public class StudentController {
     public Student departmentAddForStudent(@PathVariable Long studentId,@PathVariable Long departmentId){
         return studentService.departmentAddForStudentService(studentId,departmentId);
     }
+
+    @DeleteMapping("/{studentId}/faculties/{facultyId}")
+    public Student facultyDeleteForStudent(@PathVariable Long studentId,@PathVariable Long facultyId){
+        return studentService.facultyRemoveForStudentService(studentId,facultyId);
+    }
+
+    @DeleteMapping("/{studentId}/departments/{departmentId}")
+    public Student departmentDeleteForStudent(@PathVariable Long studentId,@PathVariable Long departmentId){
+        return studentService.departmentRemoveForStudentService(studentId,departmentId);
+    }
 }

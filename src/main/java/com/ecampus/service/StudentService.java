@@ -45,12 +45,32 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
+    public Student facultyRemoveForStudentService(Long studentsId, Long facultyId) {
+        Set<Faculty> facultySet=null;
+        Student student=studentRepository.findById(studentsId).get();
+        Faculty faculty=facultyRepository.findById(facultyId).get();
+        facultySet=student.getFaculty();
+        facultySet.remove(faculty);
+        student.setFaculty(facultySet);
+        return studentRepository.save(student);
+    }
+
     public Student departmentAddForStudentService(Long studentsId, Long departmentId) {
         Set<Department> departmentSet=null;
         Student student=studentRepository.findById(studentsId).get();
         Department department=departmentRepository.findById(departmentId).get();
         departmentSet=student.getDepartments();
         departmentSet.add(department);
+        student.setDepartments(departmentSet);
+        return studentRepository.save(student);
+    }
+
+    public Student departmentRemoveForStudentService(Long studentsId, Long departmentId) {
+        Set<Department> departmentSet=null;
+        Student student=studentRepository.findById(studentsId).get();
+        Department department=departmentRepository.findById(departmentId).get();
+        departmentSet=student.getDepartments();
+        departmentSet.remove(department);
         student.setDepartments(departmentSet);
         return studentRepository.save(student);
     }
