@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
 @Service
 public class LessonService {
 
@@ -20,4 +22,16 @@ public class LessonService {
         this.lessonRepository.save(lesson);
         return lesson;
     }
+    public Lesson removeLesson(Long lessonId) {
+        Lesson lesson=lessonRepository.findById(lessonId).get();
+        lessonRepository.delete(lesson);
+        return lesson;
+    }
+    public Lesson getLesson(Long lessonId){
+        return lessonRepository.findById(lessonId).get();
+    }
+    public List<Lesson> getAllLessons() {
+        return lessonRepository.findAll();
+    }
+
 }

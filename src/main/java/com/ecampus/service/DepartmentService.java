@@ -1,10 +1,11 @@
 package com.ecampus.service;
 
 import com.ecampus.model.Department;
-import com.ecampus.model.Faculty;
-import com.ecampus.model.Student;
+import com.ecampus.model.Lesson;
 import com.ecampus.repository.DepartmentRepository;
 import com.ecampus.repository.FacultyRepository;
+import com.ecampus.repository.LessonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,10 +16,13 @@ public class DepartmentService {
 
     private final DepartmentRepository departmentRepository;
     private final FacultyRepository facultyRepository;
+    @Autowired
+    private final LessonRepository lessonRepository;
 
-    public DepartmentService(DepartmentRepository departmentRepository, FacultyRepository facultyRepository) {
+    public DepartmentService(DepartmentRepository departmentRepository, FacultyRepository facultyRepository, LessonRepository lessonRepository) {
         this.departmentRepository = departmentRepository;
         this.facultyRepository = facultyRepository;
+        this.lessonRepository = lessonRepository;
     }
 
 
@@ -39,6 +43,28 @@ public class DepartmentService {
 
     public Department getDepartmentById(Long id) {
         return departmentRepository.findById(id).get();
+    }
+
+
+    public Department lessonAddForDepartmentService(Long lessonId, Long departmentId) {
+        Set<Lesson> lessonSet=null;
+        Department department=departmentRepository.findById(departmentId).get();
+        Lesson lesson=lessonRepository.findById(lessonId).get();
+        lessonSet=department.getLessons();
+        lessonSet.add(lesson);
+        department.setLessons(lessonSet);
+        return departmentRepository.save(department);
+    }
+
+
+    public Department lessonRemoveForDepartmentService(Long lessonId, Long departmentId) {
+        Set<Lesson> lessonSet=null;
+        Department department=departmentRepository.findById(departmentId).get();
+        Lesson lesson=lessonRepository.findById(lessonId).get();
+        lessonSet=department.getLessons();
+        lessonSet.remove(lesson);
+        department.setLessons(lessonSet);
+        return departmentRepository.save(department);
     }
 
 

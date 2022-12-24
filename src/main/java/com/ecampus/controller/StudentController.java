@@ -45,6 +45,11 @@ public class StudentController {
         return studentService.departmentAddForStudentService(studentId,departmentId);
     }
 
+    @PutMapping("/{studentId}/lessons/{lessonId}")
+    public Student lessonAddForStudent(@PathVariable Long studentId,@PathVariable Long lessonId){
+        return studentService.lessonAddForStudentService(studentId,lessonId);
+    }
+
     @DeleteMapping("/{studentId}/faculties/{facultyId}")
     public Student facultyDeleteForStudent(@PathVariable Long studentId,@PathVariable Long facultyId){
         return studentService.facultyRemoveForStudentService(studentId,facultyId);
@@ -53,5 +58,10 @@ public class StudentController {
     @DeleteMapping("/{studentId}/departments/{departmentId}")
     public Student departmentDeleteForStudent(@PathVariable Long studentId,@PathVariable Long departmentId){
         return studentService.departmentRemoveForStudentService(studentId,departmentId);
+    }
+
+    @DeleteMapping("/{studentId}/lessons/{lessonId}")
+    public Student lessonDeleteForStudent(@PathVariable Long studentId,@PathVariable Long lessonId){
+        return studentService.lessonRemoveForStudentService(studentId,lessonId);
     }
 }

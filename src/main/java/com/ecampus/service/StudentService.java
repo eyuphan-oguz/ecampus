@@ -2,9 +2,11 @@ package com.ecampus.service;
 
 import com.ecampus.model.Department;
 import com.ecampus.model.Faculty;
+import com.ecampus.model.Lesson;
 import com.ecampus.model.Student;
 import com.ecampus.repository.DepartmentRepository;
 import com.ecampus.repository.FacultyRepository;
+import com.ecampus.repository.LessonRepository;
 import com.ecampus.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,10 +26,14 @@ public class StudentService {
     @Autowired
     private final DepartmentRepository departmentRepository;
 
-    public StudentService(StudentRepository studentRepository, FacultyRepository facultyRepository, DepartmentRepository departmentRepository) {
+    @Autowired
+    private final LessonRepository lessonRepository;
+
+    public StudentService(StudentRepository studentRepository, FacultyRepository facultyRepository, DepartmentRepository departmentRepository, LessonRepository lessonRepository) {
         this.studentRepository = studentRepository;
         this.facultyRepository = facultyRepository;
         this.departmentRepository = departmentRepository;
+        this.lessonRepository = lessonRepository;
     }
 
 
@@ -83,4 +89,27 @@ public class StudentService {
         student.setDepartments(departmentSet);
         return studentRepository.save(student);
     }
+
+
+    public Student lessonAddForStudentService(Long studentsId, Long lessonId) {
+        Set<Lesson> lessonSet=null;
+        Student student=studentRepository.findById(studentsId).get();
+        Lesson lesson=lessonRepository.findById(lessonId).get();
+        lessonSet=student.getLessons();
+        lessonSet.add(lesson);
+        student.setLessons(lessonSet);
+        return studentRepository.save(student);
+    }
+
+    public Student lessonRemoveForStudentService(Long studentsId, Long lessonId) {
+        Set<Lesson> lessonSet=null;
+        Student student=studentRepository.findById(studentsId).get();
+        Lesson lesson=lessonRepository.findById(lessonId).get();
+        lessonSet=student.getLessons();
+        lessonSet.remove(lesson);
+        student.setLessons(lessonSet);
+        return studentRepository.save(student);
+    }
+
+
 }

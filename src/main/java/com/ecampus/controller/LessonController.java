@@ -5,10 +5,9 @@ import com.ecampus.model.Student;
 import com.ecampus.service.LessonService;
 import com.ecampus.service.StudentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/lessons")
@@ -16,10 +15,23 @@ import org.springframework.web.bind.annotation.RestController;
 public class LessonController {
 
     private final LessonService lessonService;
-
+    //Get
+    @GetMapping("/{lessonId}")
+    public  Lesson getLesson(@PathVariable Long lessonId){
+        return  lessonService.getLesson(lessonId);
+    }
     @PostMapping()
     public Lesson addLesson(@RequestBody Lesson lesson)
     {
         return lessonService.addLesson(lesson);
     }
+    @DeleteMapping("/{lessonId}")
+    public Lesson lessonRemove(@PathVariable Long lessonId){
+        return lessonService.removeLesson(lessonId);
+    }
+    @GetMapping()
+    public List<Lesson> getAllLessons(){
+        return lessonService.getAllLessons();
+    }
+
 }

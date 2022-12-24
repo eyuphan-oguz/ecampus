@@ -23,5 +23,4 @@ public class Lesson extends Time{
     private String lessonName;
     private int credit;
 
-
 }

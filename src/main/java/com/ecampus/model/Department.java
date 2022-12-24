@@ -26,6 +26,10 @@ public class Department extends Time{
     @JoinTable(name = "department_student",joinColumns = @JoinColumn(name = "departmentId"),inverseJoinColumns = @JoinColumn(name = "userId"))
     private Set<Student> students=new HashSet<>();
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,targetEntity = Lesson.class)
+    @JoinTable(name = "department_lessons",joinColumns = @JoinColumn(name = "departmentId"),inverseJoinColumns = @JoinColumn(name = "lessonId"))
+    private Set<Lesson> lessons=new HashSet<>();
+
 
 
 }

@@ -30,6 +30,10 @@ public class Student extends Person{
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,targetEntity = Department.class)
     @JoinTable(name = "student_department",joinColumns = @JoinColumn(name = "userId"),inverseJoinColumns = @JoinColumn(name = "departmentId"))
     private Set<Department> departments=new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,targetEntity = Lesson.class)
+    @JoinTable(name = "student_lessons",joinColumns = @JoinColumn(name = "userId"),inverseJoinColumns = @JoinColumn(name = "lessonId"))
+    private Set<Lesson> lessons=new HashSet<>();
     private boolean studentType;
 
 }
