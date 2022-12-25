@@ -1,6 +1,5 @@
 package com.ecampus.controller;
 
-import com.ecampus.model.Student;
 import com.ecampus.model.Teacher;
 import com.ecampus.service.TeacherService;
 import lombok.RequiredArgsConstructor;
