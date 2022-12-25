@@ -31,6 +31,11 @@ public class StudentAffairsController {
         return studentAffairsService.addStudentAffairs(studentAffairs);
     }
 
+    @PutMapping("/{studentAffairsId}/faculty/{facultyId}")
+    public StudentAffairs facultyAddForStudent(@PathVariable Long studentAffairsId,@PathVariable Long facultyId){
+        return studentAffairsService.facultyAddForStudentAffairs(studentAffairsId,facultyId);
+    }
+
     @PutMapping("/{studentAffairsId}/departments/{departmentId}")
     public StudentAffairs departmentAddForStudent(@PathVariable Long studentAffairsId,@PathVariable Long departmentId){
         return studentAffairsService.departmentAddForStudentAffairsService(studentAffairsId,departmentId);

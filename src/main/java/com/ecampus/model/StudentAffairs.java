@@ -1,5 +1,6 @@
 package com.ecampus.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,5 +30,10 @@ public class StudentAffairs extends Person{
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,targetEntity = Department.class)
     @JoinTable(name = "studentAffairs_department",joinColumns = @JoinColumn(name = "studentAffairsId"),inverseJoinColumns = @JoinColumn(name = "departmentId"))
     private Set<Department> departments=new HashSet<>();
+
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="facultyId")
+    private Faculty faculty;
     private boolean facultyOrInstitute;
 }
