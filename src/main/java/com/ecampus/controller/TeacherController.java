@@ -26,35 +26,29 @@ public class TeacherController {
     public Teacher getTeacher(@PathVariable Long teacherId){
         return teacherService.getTeacherById(teacherId);
     }
-
     @PutMapping("/{teacherId}/faculties/{facultyId}")
     public Teacher facultyAddForTeacher(@PathVariable Long teacherId,@PathVariable Long facultyId){
         return teacherService.facultyAddForTeacherService(teacherId,facultyId);
     }
-
     @PutMapping("/{teacherId}/departments/{departmentId}")
     public Teacher departmentAddForTeacher(@PathVariable Long teacherId,@PathVariable Long departmentId){
         return teacherService.departmentAddForTeacherService(teacherId,departmentId);
     }
-
     @PutMapping("/{teacherId}/lessons/{lessonId}")
     public Teacher lessonAddForTeacher(@PathVariable Long teacherId,@PathVariable Long lessonId){
         return teacherService.lessonAddForTeacherService(teacherId,lessonId);
     }
-
     @DeleteMapping("/{teacherId}/faculties/{facultyId}")
     public Teacher facultyDeleteForTeacher(@PathVariable Long teacherId,@PathVariable Long facultyId){
         return teacherService.facultyRemoveForTeacherService(teacherId,facultyId);
     }
-
     @DeleteMapping("/{teacherId}/departments/{departmentId}")
     public Teacher departmentDeleteForTeacher(@PathVariable Long teacherId,@PathVariable Long departmentId){
         return teacherService.departmentRemoveForTeacherService(teacherId,departmentId);
     }
-
     @DeleteMapping("/{teacherId}/lessons/{lessonId}")
     public Teacher lessonDeleteForTeacher(@PathVariable Long teacherId,@PathVariable Long lessonId){
         return teacherService.lessonRemoveForTeacherService(teacherId,lessonId);
     }
-
+    //Furkan ULU pull request deneme
 }
