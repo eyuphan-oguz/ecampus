@@ -50,5 +50,5 @@ public class TeacherController {
     public Teacher lessonDeleteForTeacher(@PathVariable Long teacherId,@PathVariable Long lessonId){
         return teacherService.lessonRemoveForTeacherService(teacherId,lessonId);
     }
-    //Furkan ULU pull request deneme
+
 }
