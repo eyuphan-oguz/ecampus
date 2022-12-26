@@ -51,7 +51,7 @@ public class InstituteService {
         return instituteRepository.save(institute);
     }
 
-    public List<Institute> getAllInstitute() {
+    public List<Institute> getAllInstitutes() {
         return instituteRepository.findAll();
     }
 

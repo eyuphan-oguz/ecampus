@@ -16,8 +16,8 @@ public class InstituteController {
     private final InstituteService instituteService;
 
     @GetMapping()
-    public List<Institute> getAllInstitute(){
-        return instituteService.getAllInstitute();
+    public List<Institute> getAllInstitutes(){
+        return instituteService.getAllInstitutes();
     }
     @GetMapping("/{instituteId}")
     public Institute getInstituteById(@PathVariable Long instituteId){return instituteService.getInstituteById(instituteId);}
@@ -29,12 +29,12 @@ public class InstituteController {
     }
 
     @PutMapping("/{instituteID}/departments/{departmentId}")
-    public Institute departmentAddForStudent(@PathVariable Long departmentId, @PathVariable Long instituteID){
+    public Institute departmentAddForInstitute(@PathVariable Long departmentId, @PathVariable Long instituteID){
         return instituteService.departmentAddForInstituteService(instituteID,departmentId);
     }
 
     @DeleteMapping("/{instituteId}/departments/{departmentId}")
-    public Institute departmentRemoveForStudent(@PathVariable Long departmentId, @PathVariable Long instituteId){
+    public Institute departmentRemoveForInstitute(@PathVariable Long departmentId, @PathVariable Long instituteId){
         return instituteService.departmentRemoveForInstituteService(instituteId,departmentId);
     }
 

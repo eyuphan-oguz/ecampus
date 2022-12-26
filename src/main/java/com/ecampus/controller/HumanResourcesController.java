@@ -1,9 +1,6 @@
 package com.ecampus.controller;
 
 import com.ecampus.model.HumanResources;
-import com.ecampus.model.StudentAffairs;
-import com.ecampus.model.Teacher;
-import com.ecampus.repository.HumanResourcesRepository;
 import com.ecampus.service.HumanResourcesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +35,7 @@ public class HumanResourcesController {
     public HumanResources teacherAddForHumanResources(@PathVariable Long humanResourcesId, @PathVariable Long teacherId){
         return humanResourcesService.teacherAddForHumanResources(teacherId,humanResourcesId);
     }
-
+    // Hata Alındı
     @DeleteMapping("/{humanResourcesId}/teacher/{teacherId}")
     public HumanResources teacherRemoveForHumanResources(@PathVariable Long humanResourcesId, @PathVariable Long teacherId){
         return humanResourcesService.teacherRemoveForHumanResources(teacherId,humanResourcesId);
@@ -49,7 +46,7 @@ public class HumanResourcesController {
         return humanResourcesService.studentAffairsAddForHumanResources(studentAffairsId,humanResourcesId);
     }
 
-    @DeleteMapping("/{humanResourcesId}/teacher/{teacherId}")
+    @DeleteMapping("/{humanResourcesId}/studentAffairs/{studentAffairsId}")
     public HumanResources studentAffairsRemoveForHumanResources(@PathVariable Long humanResourcesId, @PathVariable Long studentAffairsId){
         return humanResourcesService.studentAffairsRemoveForHumanResources(studentAffairsId,humanResourcesId);
     }
