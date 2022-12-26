@@ -60,7 +60,4 @@ public class FacultyService {
         return facultyRepository.findById(id).get();
     }
 
-
-
-
 }

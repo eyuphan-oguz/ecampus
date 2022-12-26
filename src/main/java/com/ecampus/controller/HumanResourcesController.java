@@ -43,4 +43,14 @@ public class HumanResourcesController {
     public HumanResources teacherRemoveForHumanResources(@PathVariable Long humanResourcesId, @PathVariable Long teacherId){
         return humanResourcesService.teacherRemoveForHumanResources(teacherId,humanResourcesId);
     }
+
+    @PutMapping("/{humanResourcesId}/studentAffairs/{studentAffairsId}")
+    public HumanResources studentAffairsAddForHumanResources(@PathVariable Long humanResourcesId, @PathVariable Long studentAffairsId){
+        return humanResourcesService.studentAffairsAddForHumanResources(studentAffairsId,humanResourcesId);
+    }
+
+    @DeleteMapping("/{humanResourcesId}/teacher/{teacherId}")
+    public HumanResources studentAffairsRemoveForHumanResources(@PathVariable Long humanResourcesId, @PathVariable Long studentAffairsId){
+        return humanResourcesService.studentAffairsRemoveForHumanResources(studentAffairsId,humanResourcesId);
+    }
 }

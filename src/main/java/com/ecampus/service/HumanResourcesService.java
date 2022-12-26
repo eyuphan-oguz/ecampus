@@ -1,9 +1,6 @@
 package com.ecampus.service;
 
-import com.ecampus.model.Department;
-import com.ecampus.model.Faculty;
-import com.ecampus.model.HumanResources;
-import com.ecampus.model.Teacher;
+import com.ecampus.model.*;
 import com.ecampus.repository.DepartmentRepository;
 import com.ecampus.repository.HumanResourcesRepository;
 import com.ecampus.repository.StudentAffairsRepository;
@@ -36,13 +33,10 @@ public class HumanResourcesService {
         return humanResourcesRepository.findById(id).get();
     }
 
-
-
     public HumanResources addHumanResources(HumanResources humanResources) {
         this.humanResourcesRepository.save(humanResources);
         return humanResources;
     }
-
     public HumanResources teacherAddForHumanResources(Long teacherId, Long humanResourcesId) {
         Set<Teacher> teacherSet=null;
         HumanResources humanResources=humanResourcesRepository.findById(humanResourcesId).get();
@@ -52,7 +46,6 @@ public class HumanResourcesService {
         humanResources.setTeacherSet(teacherSet);
         return humanResourcesRepository.save(humanResources);
     }
-
     public HumanResources teacherRemoveForHumanResources(Long teacherId, Long humanResourcesId) {
         Set<Teacher> teacherSet=null;
         HumanResources humanResources=humanResourcesRepository.findById(humanResourcesId).get();
@@ -62,5 +55,22 @@ public class HumanResourcesService {
         humanResources.setTeacherSet(teacherSet);
         return humanResourcesRepository.save(humanResources);
     }
-
+    public HumanResources studentAffairsAddForHumanResources(Long studentAffairsId, Long humanResourcesId) {
+        Set<StudentAffairs> studentAffairsSet = null;
+        HumanResources humanResources=humanResourcesRepository.findById(humanResourcesId).get();
+        StudentAffairs studentAffairs=studentAffairsRepository.findById(studentAffairsId).get();
+        studentAffairsSet=humanResources.getStudentAffairsSet();
+        studentAffairsSet.add(studentAffairs);
+        humanResources.setStudentAffairsSet(studentAffairsSet);
+        return humanResourcesRepository.save(humanResources);
+    }
+    public HumanResources studentAffairsRemoveForHumanResources(Long studentAffairsId, Long humanResourcesId) {
+        Set<StudentAffairs> studentAffairsSet = null;
+        HumanResources humanResources=humanResourcesRepository.findById(humanResourcesId).get();
+        StudentAffairs studentAffairs=studentAffairsRepository.findById(studentAffairsId).get();
+        studentAffairsSet=humanResources.getStudentAffairsSet();
+        studentAffairsSet.remove(studentAffairs);
+        humanResources.setStudentAffairsSet(studentAffairsSet);
+        return humanResourcesRepository.save(humanResources);
+    }
 }

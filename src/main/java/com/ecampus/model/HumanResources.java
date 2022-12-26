@@ -26,13 +26,8 @@ public class HumanResources extends Person{
     @JoinTable(name = "humanResources_studentAffairsId",joinColumns = @JoinColumn(name = "humanResourcesId"),inverseJoinColumns = @JoinColumn(name = "studentAffairsId"))
     private Set<StudentAffairs> studentAffairsSet=new HashSet<>();
 
-
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,targetEntity = Teacher.class)
     @JoinTable(name = "humanResources_teacher",joinColumns = @JoinColumn(name = "humanResources"),inverseJoinColumns = @JoinColumn(name = "teacherId"))
     private Set<Teacher> teacherSet=new HashSet<>();
-
-
-
-
 
 }
