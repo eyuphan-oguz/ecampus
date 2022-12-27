@@ -1,5 +1,6 @@
 package com.ecampus.controller;
 
+import com.ecampus.DTO.HumanResourcesDto;
 import com.ecampus.model.HumanResources;
 import com.ecampus.service.HumanResourcesService;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,7 @@ public class HumanResourcesController {
     }
 
     @PostMapping()
-    public HumanResources addHumanResources(@RequestBody HumanResources humanResources)
+    public HumanResourcesDto addHumanResources(@RequestBody HumanResources humanResources)
     {
         return humanResourcesService.addHumanResources(humanResources);
     }

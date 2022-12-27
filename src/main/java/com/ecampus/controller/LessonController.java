@@ -1,5 +1,6 @@
 package com.ecampus.controller;
 
+import com.ecampus.DTO.LessonDto;
 import com.ecampus.model.Lesson;
 import com.ecampus.model.Student;
 import com.ecampus.service.LessonService;
@@ -21,12 +22,12 @@ public class LessonController {
         return  lessonService.getLesson(lessonId);
     }
     @PostMapping()
-    public Lesson addLesson(@RequestBody Lesson lesson)
+    public LessonDto addLesson(@RequestBody Lesson lesson)
     {
         return lessonService.addLesson(lesson);
     }
     @DeleteMapping("/{lessonId}")
-    public Lesson lessonRemove(@PathVariable Long lessonId){
+    public LessonDto lessonRemove(@PathVariable Long lessonId){
         return lessonService.removeLesson(lessonId);
     }
     @GetMapping()

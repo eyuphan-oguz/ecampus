@@ -1,5 +1,6 @@
 package com.ecampus.service;
 
+import com.ecampus.DTO.LessonDto;
 import com.ecampus.model.Lesson;
 import com.ecampus.model.Student;
 import com.ecampus.repository.LessonRepository;
@@ -18,14 +19,17 @@ public class LessonService {
         this.lessonRepository = lessonRepository;
     }
 
-    public Lesson addLesson(Lesson lesson) {
-        this.lessonRepository.save(lesson);
-        return lesson;
+    public LessonDto addLesson(Lesson lesson) {
+        Lesson savedLesson = lessonRepository.save(lesson);
+        return new LessonDto(
+                savedLesson.getLessonName(),
+                savedLesson.getCredit()
+        );
     }
-    public Lesson removeLesson(Long lessonId) {
-        Lesson lesson=lessonRepository.findById(lessonId).get();
-        lessonRepository.delete(lesson);
-        return lesson;
+    public LessonDto removeLesson(Long lessonId) {
+        Lesson savedLesson = lessonRepository.findById(lessonId).get();
+        lessonRepository.delete(savedLesson);
+        return new LessonDto(savedLesson.getLessonName(),savedLesson.getCredit());
     }
     public Lesson getLesson(Long lessonId){
         return lessonRepository.findById(lessonId).get();
