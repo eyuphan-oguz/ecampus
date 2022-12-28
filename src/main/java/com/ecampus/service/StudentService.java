@@ -1,5 +1,6 @@
 package com.ecampus.service;
 
+import com.ecampus.DTO.StudentDto;
 import com.ecampus.model.Department;
 import com.ecampus.model.Faculty;
 import com.ecampus.model.Lesson;
@@ -38,9 +39,17 @@ public class StudentService {
 
 
 
-    public Student addStudent(Student user) {
-        this.studentRepository.save(user);
-        return user;
+    public StudentDto addStudent(Student user) {
+        Student savedStudent = studentRepository.save(user);
+        return new StudentDto(
+                savedStudent.getSeasonNo(),
+                savedStudent.getStudentNo(),
+                savedStudent.getName(),
+                savedStudent.getSurname(),
+                savedStudent.isGender(),
+                savedStudent.getEmail(),
+                savedStudent.getPhoneNo()
+        );
     }
 
     public List<Student> getAllStudent() {

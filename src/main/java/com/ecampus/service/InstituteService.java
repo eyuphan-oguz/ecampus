@@ -1,5 +1,6 @@
 package com.ecampus.service;
 
+import com.ecampus.DTO.InstituteDto;
 import com.ecampus.model.Department;
 import com.ecampus.model.Faculty;
 import com.ecampus.model.Institute;
@@ -20,15 +21,21 @@ public class InstituteService {
         this.departmentRepository = departmentRepository;
     }
 
-    public Institute addInstitute(Institute institute) {
-        this.instituteRepository.save(institute);
-        return institute;
+    public InstituteDto addInstitute(Institute institute) {
+        Institute savedInstitute = instituteRepository.save(institute);
+        return new InstituteDto(
+                savedInstitute.getInstituteName(),
+                savedInstitute.getInstituteManagerName()
+        );
     }
 
-    public Institute removeInstitute(Long instituteId) {
-        Institute institute=instituteRepository.findById(instituteId).get();
-        instituteRepository.delete(institute);
-        return institute;
+    public InstituteDto removeInstitute(Long instituteId) {
+        Institute savedInstitute=instituteRepository.findById(instituteId).get();
+        instituteRepository.delete(savedInstitute);
+        return new InstituteDto(
+                savedInstitute.getInstituteName(),
+                savedInstitute.getInstituteManagerName()
+        );
     }
 
     public Institute departmentAddForInstituteService(Long departmentId, Long instituteId) {

@@ -1,6 +1,7 @@
 package com.ecampus.controller;
 
 
+import com.ecampus.DTO.StudentDto;
 import com.ecampus.model.Department;
 import com.ecampus.model.Student;
 import com.ecampus.repository.StudentRepository;
@@ -30,7 +31,7 @@ public class StudentController {
     }
 
     @PostMapping()
-    public Student addUser(@RequestBody Student student)
+    public StudentDto addUser(@RequestBody Student student)
     {
         return studentService.addStudent(student);
     }

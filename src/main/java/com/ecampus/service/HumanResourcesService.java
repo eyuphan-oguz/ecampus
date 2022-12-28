@@ -1,5 +1,6 @@
 package com.ecampus.service;
 
+import com.ecampus.DTO.HumanResourcesDto;
 import com.ecampus.model.*;
 import com.ecampus.repository.DepartmentRepository;
 import com.ecampus.repository.HumanResourcesRepository;
@@ -33,9 +34,11 @@ public class HumanResourcesService {
         return humanResourcesRepository.findById(id).get();
     }
 
-    public HumanResources addHumanResources(HumanResources humanResources) {
-        this.humanResourcesRepository.save(humanResources);
-        return humanResources;
+    public HumanResourcesDto addHumanResources(HumanResources humanResources) {
+        HumanResources savedHumanResources= humanResourcesRepository.save(humanResources);
+        return new HumanResourcesDto(
+                savedHumanResources.getIbanNo()
+        );
     }
     public HumanResources teacherAddForHumanResources(Long teacherId, Long humanResourcesId) {
         Set<Teacher> teacherSet=null;

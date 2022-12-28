@@ -35,5 +35,5 @@ public class Student extends Person{
     @JoinTable(name = "student_lessons",joinColumns = @JoinColumn(name = "userId"),inverseJoinColumns = @JoinColumn(name = "lessonId"))
     private Set<Lesson> lessons=new HashSet<>();
     private boolean studentType;
-
 }
+

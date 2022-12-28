@@ -1,5 +1,6 @@
 package com.ecampus.service;
 
+import com.ecampus.DTO.FacultyDto;
 import com.ecampus.model.Department;
 import com.ecampus.model.Faculty;
 import com.ecampus.repository.DepartmentRepository;
@@ -21,15 +22,21 @@ public class FacultyService {
         this.departmentRepository = departmentRepository;
     }
 
-    public Faculty addFaculty(Faculty faculty) {
-        this.facultyRepository.save(faculty);
-        return faculty;
+    public FacultyDto addFaculty(Faculty faculty) {
+        Faculty savedFaculty = facultyRepository.save(faculty);
+        return new FacultyDto(
+                savedFaculty.getFacultyName(),
+                savedFaculty.getFacultyManagerName()
+        );
     }
 
-    public Faculty removeFaculty(Long facultyId) {
-        Faculty faculty=facultyRepository.findById(facultyId).get();
-        facultyRepository.delete(faculty);
-        return faculty;
+    public FacultyDto removeFaculty(Long facultyId) {
+        Faculty savedFaculty=facultyRepository.findById(facultyId).get();
+        facultyRepository.delete(savedFaculty);
+        return new FacultyDto(
+                savedFaculty.getFacultyName(),
+                savedFaculty.getFacultyManagerName()
+        );
     }
 
     public Faculty departmentAddForFacultyService(Long departmentId, Long facultyId) {

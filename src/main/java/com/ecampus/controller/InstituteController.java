@@ -1,5 +1,6 @@
 package com.ecampus.controller;
 
+import com.ecampus.DTO.InstituteDto;
 import com.ecampus.model.Faculty;
 import com.ecampus.model.Institute;
 import com.ecampus.service.FacultyService;
@@ -23,7 +24,7 @@ public class InstituteController {
     public Institute getInstituteById(@PathVariable Long instituteId){return instituteService.getInstituteById(instituteId);}
 
     @PostMapping()
-    public Institute addInstitute(@RequestBody Institute institute)
+    public InstituteDto addInstitute(@RequestBody Institute institute)
     {
         return instituteService.addInstitute(institute);
     }
@@ -39,7 +40,7 @@ public class InstituteController {
     }
 
     @DeleteMapping("/{instituteId}")
-    public Institute instituteRemove(@PathVariable Long instituteId){
+    public InstituteDto instituteRemove(@PathVariable Long instituteId){
         return instituteService.removeInstitute(instituteId);
     }
 }

@@ -1,5 +1,6 @@
 package com.ecampus.service;
 
+import com.ecampus.DTO.DepartmentDto;
 import com.ecampus.model.Department;
 import com.ecampus.model.Lesson;
 import com.ecampus.repository.DepartmentRepository;
@@ -26,15 +27,21 @@ public class DepartmentService {
     }
 
 
-    public Department addDepartment(Department department) {
-        this.departmentRepository.save(department);
-        return department;
+    public DepartmentDto addDepartment(Department department) {
+        Department savedDepartment = departmentRepository.save(department);
+        return new DepartmentDto(
+                savedDepartment.getDepartmentName(),
+                savedDepartment.isFacultyOrInstitute()
+        );
     }
 
-    public Department removeDepartment(Long departmentId) {
-        Department department=departmentRepository.findById(departmentId).get();
-        departmentRepository.delete(department);
-        return department;
+    public DepartmentDto removeDepartment(Long departmentId) {
+        Department savedDepartment=departmentRepository.findById(departmentId).get();
+        departmentRepository.delete(savedDepartment);
+        return new DepartmentDto(
+                savedDepartment.getDepartmentName(),
+                savedDepartment.isFacultyOrInstitute()
+        );
     }
 
     public List<Department> getAllDepartment() {

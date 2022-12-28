@@ -1,5 +1,6 @@
 package com.ecampus.controller;
 
+import com.ecampus.DTO.FacultyDto;
 import com.ecampus.model.Department;
 import com.ecampus.model.Faculty;
 import com.ecampus.model.Student;
@@ -26,7 +27,7 @@ public class FacultyController {
     }
 
     @PostMapping()
-    public Faculty addFaculty(@RequestBody Faculty faculty)
+    public FacultyDto addFaculty(@RequestBody Faculty faculty)
     {
         return facultyService.addFaculty(faculty);
     }
@@ -42,7 +43,7 @@ public class FacultyController {
     }
 
     @DeleteMapping("/{facultyId}")
-    public Faculty facultyRemove(@PathVariable Long facultyId){
+    public FacultyDto facultyRemove(@PathVariable Long facultyId){
         return facultyService.removeFaculty(facultyId);
     }
 
