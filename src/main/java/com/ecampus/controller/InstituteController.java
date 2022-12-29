@@ -21,7 +21,7 @@ public class InstituteController {
         return instituteService.getAllInstitutes();
     }
     @GetMapping("/{instituteId}")
-    public Institute getInstituteById(@PathVariable Long instituteId){return instituteService.getInstituteById(instituteId);}
+    public InstituteDto getInstituteById(@PathVariable Long instituteId){return instituteService.getInstituteById(instituteId);}
 
     @PostMapping()
     public InstituteDto addInstitute(@RequestBody Institute institute)

@@ -1,4 +1,5 @@
 package com.ecampus.service;
+import com.ecampus.DTO.TeacherDto;
 import com.ecampus.model.*;
 import com.ecampus.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,15 +29,30 @@ public class TeacherService {
         this.departmentRepository = departmentRepository;
         this.lessonRepository = lessonRepository;
     }
-    public Teacher addTeacher(Teacher teacher) {
-        this.teacherRepository.save(teacher);
-        return teacher;
+    public TeacherDto addTeacher(Teacher teacher) {
+        Teacher savedTeacher = teacherRepository.save(teacher);
+        return new TeacherDto(
+                savedTeacher.getName(),
+                savedTeacher.getSurname(),
+                savedTeacher.getEmail(),
+                savedTeacher.isGender(),
+                savedTeacher.getPhoneNo(),
+                savedTeacher.getIbanNo()
+        );
     }
     public List<Teacher> getAllTeacher() {
         return teacherRepository.findAll();
     }
-    public Teacher getTeacherById(Long id) {
-        return teacherRepository.findById(id).get();
+    public TeacherDto getTeacherById(Long id) {
+        Teacher getTeacherById = teacherRepository.findById(id).get();
+        return new TeacherDto(
+                getTeacherById.getName(),
+                getTeacherById.getSurname(),
+                getTeacherById.getEmail(),
+                getTeacherById.isGender(),
+                getTeacherById.getPhoneNo(),
+                getTeacherById.getIbanNo()
+        );
     }
     public Teacher facultyAddForTeacherService(Long teacherId, Long facultyId) {
         Set<Faculty> facultySet=null;

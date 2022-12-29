@@ -43,13 +43,17 @@ public class DepartmentService {
                 savedDepartment.isFacultyOrInstitute()
         );
     }
-
+    //**************
     public List<Department> getAllDepartment() {
         return departmentRepository.findAll();
     }
 
-    public Department getDepartmentById(Long id) {
-        return departmentRepository.findById(id).get();
+    public DepartmentDto getDepartmentById(Long id) {
+        Department getDepartmentById = departmentRepository.findById(id).get();
+        return new DepartmentDto(
+                getDepartmentById.getDepartmentName(),
+                getDepartmentById.isFacultyOrInstitute()
+        );
     }
 
 
@@ -63,7 +67,6 @@ public class DepartmentService {
         return departmentRepository.save(department);
     }
 
-
     public Department lessonRemoveForDepartmentService(Long lessonId, Long departmentId) {
         Set<Lesson> lessonSet=null;
         Department department=departmentRepository.findById(departmentId).get();
@@ -73,10 +76,4 @@ public class DepartmentService {
         department.setLessons(lessonSet);
         return departmentRepository.save(department);
     }
-
-
-
-
-
-
 }

@@ -30,13 +30,24 @@ public class HumanResourcesService {
         return humanResourcesRepository.findAll();
     }
 
-    public HumanResources getHumanResourcesById(Long id) {
-        return humanResourcesRepository.findById(id).get();
+    public HumanResourcesDto getHumanResourcesById(Long id) {
+        HumanResources savedHumanResources = humanResourcesRepository.findById(id).get();
+        return new HumanResourcesDto(
+                savedHumanResources.getName(),
+                savedHumanResources.getSurname(),
+                savedHumanResources.getEmail(),
+                savedHumanResources.getPhoneNo(),
+                savedHumanResources.getIbanNo()
+        );
     }
 
     public HumanResourcesDto addHumanResources(HumanResources humanResources) {
         HumanResources savedHumanResources= humanResourcesRepository.save(humanResources);
         return new HumanResourcesDto(
+                savedHumanResources.getName(),
+                savedHumanResources.getSurname(),
+                savedHumanResources.getEmail(),
+                savedHumanResources.getPhoneNo(),
                 savedHumanResources.getIbanNo()
         );
     }

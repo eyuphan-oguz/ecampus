@@ -56,8 +56,17 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    public Student getStudentById(Long id) {
-        return studentRepository.findById(id).get();
+    public StudentDto getStudentById(Long id) {
+        Student getStudentById = studentRepository.findById(id).get();
+        return new StudentDto(
+                getStudentById.getSeasonNo(),
+                getStudentById.getStudentNo(),
+                getStudentById.getName(),
+                getStudentById.getSurname(),
+                getStudentById.isGender(),
+                getStudentById.getEmail(),
+                getStudentById.getPhoneNo()
+        );
     }
     public Student facultyAddForStudentService(Long studentsId, Long facultyId) {
         Set<Faculty> facultySet=null;

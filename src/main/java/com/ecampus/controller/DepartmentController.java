@@ -24,13 +24,16 @@ public class DepartmentController {
     }
 
     @GetMapping("/{departmentId}")
-    public Department getDepartment(@PathVariable Long departmentId){
-        return departmentService.getDepartmentById(departmentId);
+    public DepartmentDto getDepartment(@PathVariable Long departmentId){
+        DepartmentDto savedDepartment = departmentService.getDepartmentById(departmentId);
+        return new DepartmentDto(
+          savedDepartment.getDepartmentName(),
+          savedDepartment.isFacultyOrInstitute()
+        );
     }
 
     @PostMapping()
-    public DepartmentDto addDepartment(@RequestBody Department department)
-    {
+    public DepartmentDto addDepartment(@RequestBody Department department) {
         return departmentService.addDepartment(department);
     }
 

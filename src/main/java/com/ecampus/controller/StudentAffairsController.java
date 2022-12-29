@@ -1,5 +1,6 @@
 package com.ecampus.controller;
 
+import com.ecampus.DTO.StudentAffairsDto;
 import com.ecampus.model.Student;
 import com.ecampus.model.StudentAffairs;
 import com.ecampus.service.StudentAffairsService;
@@ -21,12 +22,12 @@ public class StudentAffairsController {
     }
 
     @GetMapping("/{studentAffairsId}")
-    public StudentAffairs getStudentAffairs(@PathVariable Long studentAffairsId){
+    public StudentAffairsDto getStudentAffairs(@PathVariable Long studentAffairsId){
         return studentAffairsService.getStudentAffairsById(studentAffairsId);
     }
 
     @PostMapping()
-    public StudentAffairs addStudentAffairs(@RequestBody StudentAffairs studentAffairs)
+    public StudentAffairsDto addStudentAffairs(@RequestBody StudentAffairs studentAffairs)
     {
         return studentAffairsService.addStudentAffairs(studentAffairs);
     }
