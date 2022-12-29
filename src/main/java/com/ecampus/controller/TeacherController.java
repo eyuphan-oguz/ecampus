@@ -1,5 +1,6 @@
 package com.ecampus.controller;
 
+import com.ecampus.DTO.TeacherDto;
 import com.ecampus.model.Teacher;
 import com.ecampus.service.TeacherService;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ public class TeacherController {
     private final TeacherService teacherService;
 
     @PostMapping()
-    public Teacher addTeacher(@RequestBody Teacher teacher)
+    public TeacherDto addTeacher(@RequestBody Teacher teacher)
     {
         return teacherService.addTeacher(teacher);
     }
@@ -23,7 +24,7 @@ public class TeacherController {
         return teacherService.getAllTeacher();
     }
     @GetMapping("/{teacherId}")
-    public Teacher getTeacher(@PathVariable Long teacherId){
+    public TeacherDto getTeacher(@PathVariable Long teacherId){
         return teacherService.getTeacherById(teacherId);
     }
     @PutMapping("/{teacherId}/faculties/{facultyId}")

@@ -63,8 +63,12 @@ public class FacultyService {
         return facultyRepository.findAll();
     }
 
-    public Faculty getFacultyById(Long id) {
-        return facultyRepository.findById(id).get();
+    public FacultyDto getFacultyById(Long id) {
+        Faculty getFacultyById = facultyRepository.findById(id).get();
+        return new FacultyDto(
+                getFacultyById.getFacultyName(),
+                getFacultyById.getFacultyManagerName()
+        );
     }
 
 }

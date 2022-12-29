@@ -22,7 +22,7 @@ public class HumanResourcesController {
     }
 
     @GetMapping("/{humanResourcesId}")
-    public HumanResources getHumanResources(@PathVariable Long humanResourcesId){
+    public HumanResourcesDto getHumanResources(@PathVariable Long humanResourcesId){
         return humanResourcesService.getHumanResourcesById(humanResourcesId);
     }
 

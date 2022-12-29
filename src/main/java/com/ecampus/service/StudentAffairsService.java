@@ -1,5 +1,6 @@
 package com.ecampus.service;
 
+import com.ecampus.DTO.StudentAffairsDto;
 import com.ecampus.model.Department;
 import com.ecampus.model.Faculty;
 import com.ecampus.model.StudentAffairs;
@@ -34,19 +35,31 @@ public class StudentAffairsService {
         return studentAffairsRepository.findAll();
     }
 
-    public StudentAffairs getStudentAffairsById(Long id) {
-        return studentAffairsRepository.findById(id).get();
+    public StudentAffairsDto getStudentAffairsById(Long id) {
+        StudentAffairs getStudentAffairsById = studentAffairsRepository.findById(id).get();
+        return new StudentAffairsDto(
+                getStudentAffairsById.getName(),
+                getStudentAffairsById.getSurname(),
+                getStudentAffairsById.getEmail(),
+                getStudentAffairsById.getPhoneNo(),
+                getStudentAffairsById.getIbanNo()
+        );
     }
 
-
-    public StudentAffairs addStudentAffairs(StudentAffairs studentAffairs) {
-        this.studentAffairsRepository.save(studentAffairs);
-        return studentAffairs;
+    public StudentAffairsDto addStudentAffairs(StudentAffairs studentAffairs) {
+        StudentAffairs savedStudentAffairs = studentAffairsRepository.save(studentAffairs);
+        return new StudentAffairsDto(
+                savedStudentAffairs.getName(),
+                savedStudentAffairs.getSurname(),
+                savedStudentAffairs.getEmail(),
+                savedStudentAffairs.getPhoneNo(),
+                savedStudentAffairs.getIbanNo()
+        );
     }
 
     public StudentAffairs facultyAddForStudentAffairs(Long studentAffairsId, Long facultyId) {
-        StudentAffairs studentAffairs=studentAffairsRepository.findById(studentAffairsId).get();
-        Faculty faculty=facultyRepository.findById(facultyId).get();
+        StudentAffairs studentAffairs = studentAffairsRepository.findById(studentAffairsId).get();
+        Faculty faculty = facultyRepository.findById(facultyId).get();
         studentAffairs.setFaculty(faculty);
         return studentAffairsRepository.save(studentAffairs);
     }

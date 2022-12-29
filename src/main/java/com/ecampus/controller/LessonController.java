@@ -18,7 +18,7 @@ public class LessonController {
     private final LessonService lessonService;
     //Get
     @GetMapping("/{lessonId}")
-    public  Lesson getLesson(@PathVariable Long lessonId){
+    public  LessonDto getLesson(@PathVariable Long lessonId){
         return  lessonService.getLesson(lessonId);
     }
     @PostMapping()

@@ -31,8 +31,12 @@ public class LessonService {
         lessonRepository.delete(savedLesson);
         return new LessonDto(savedLesson.getLessonName(),savedLesson.getCredit());
     }
-    public Lesson getLesson(Long lessonId){
-        return lessonRepository.findById(lessonId).get();
+    public LessonDto getLesson(Long lessonId){
+        Lesson savedLesson = lessonRepository.findById(lessonId).get();
+        return new LessonDto(
+                savedLesson.getLessonName(),
+                savedLesson.getCredit()
+        );
     }
     public List<Lesson> getAllLessons() {
         return lessonRepository.findAll();

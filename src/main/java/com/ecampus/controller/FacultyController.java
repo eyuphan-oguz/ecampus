@@ -22,7 +22,7 @@ public class FacultyController {
         return facultyService.getAllFaculty();
     }
     @GetMapping("/{facultyId}")
-    public Faculty getFaculty(@PathVariable Long facultyId){
+    public FacultyDto getFaculty(@PathVariable Long facultyId){
         return facultyService.getFacultyById(facultyId);
     }
 

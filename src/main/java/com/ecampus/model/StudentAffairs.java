@@ -19,7 +19,10 @@ public class StudentAffairs extends Person{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private String name;
+    private String surname;
+    private String email;
+    private String phoneNo;
     private String ibanNo;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,targetEntity = Faculty.class)

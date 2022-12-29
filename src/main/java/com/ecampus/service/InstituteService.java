@@ -62,8 +62,12 @@ public class InstituteService {
         return instituteRepository.findAll();
     }
 
-    public Institute getInstituteById(Long id) {
-        return instituteRepository.findById(id).get();
+    public InstituteDto getInstituteById(Long id) {
+        Institute savedInstituteId = instituteRepository.findById(id).get();
+        return new InstituteDto(
+                savedInstituteId.getInstituteName(),
+                savedInstituteId.getInstituteManagerName()
+        );
     }
 
 }
